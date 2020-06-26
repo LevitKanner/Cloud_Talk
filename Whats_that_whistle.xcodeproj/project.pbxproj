@@ -18,6 +18,8 @@
 		1B24D47324A4BB9F00B0ACBB /* SelectGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24D47224A4BB9F00B0ACBB /* SelectGenreViewController.swift */; };
 		1B24D47524A4BDAD00B0ACBB /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24D47424A4BDAD00B0ACBB /* AddCommentsViewController.swift */; };
 		1B24D47724A4C3CE00B0ACBB /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24D47624A4C3CE00B0ACBB /* SubmitViewController.swift */; };
+		1B309E6624A5F7BA005FDE9E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B309E6524A5F7BA005FDE9E /* CloudKit.framework */; };
+		1B309E6824A60409005FDE9E /* Whistle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B309E6724A60409005FDE9E /* Whistle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,9 @@
 		1B24D47224A4BB9F00B0ACBB /* SelectGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreViewController.swift; sourceTree = "<group>"; };
 		1B24D47424A4BDAD00B0ACBB /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 		1B24D47624A4C3CE00B0ACBB /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
+		1B309E6324A5F7B5005FDE9E /* Whats_that_whistle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Whats_that_whistle.entitlements; sourceTree = "<group>"; };
+		1B309E6524A5F7BA005FDE9E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		1B309E6724A60409005FDE9E /* Whistle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whistle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B309E6624A5F7BA005FDE9E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,7 @@
 			children = (
 				1B24D45924A47E3F00B0ACBB /* Whats_that_whistle */,
 				1B24D45824A47E3F00B0ACBB /* Products */,
+				1B309E6424A5F7BA005FDE9E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,20 +73,54 @@
 		1B24D45924A47E3F00B0ACBB /* Whats_that_whistle */ = {
 			isa = PBXGroup;
 			children = (
-				1B24D47024A4B0B800B0ACBB /* DateFormat-Extension.swift */,
+				1B309E6B24A6072E005FDE9E /* Helpers */,
+				1B309E6A24A6070B005FDE9E /* ViewControlller */,
+				1B309E6924A60703005FDE9E /* Model */,
 				1B24D45A24A47E3F00B0ACBB /* AppDelegate.swift */,
 				1B24D45C24A47E3F00B0ACBB /* SceneDelegate.swift */,
+				1B24D46024A47E3F00B0ACBB /* Main.storyboard */,
+				1B24D46324A47E4400B0ACBB /* Assets.xcassets */,
+				1B24D46524A47E4400B0ACBB /* LaunchScreen.storyboard */,
+				1B24D46824A47E4400B0ACBB /* Info.plist */,
+				1B309E6324A5F7B5005FDE9E /* Whats_that_whistle.entitlements */,
+			);
+			path = Whats_that_whistle;
+			sourceTree = "<group>";
+		};
+		1B309E6424A5F7BA005FDE9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B309E6524A5F7BA005FDE9E /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B309E6924A60703005FDE9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B309E6724A60409005FDE9E /* Whistle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B309E6A24A6070B005FDE9E /* ViewControlller */ = {
+			isa = PBXGroup;
+			children = (
 				1B24D45E24A47E3F00B0ACBB /* ViewController.swift */,
 				1B24D47624A4C3CE00B0ACBB /* SubmitViewController.swift */,
 				1B24D46E24A485E200B0ACBB /* RecordWhistleViewController.swift */,
 				1B24D47224A4BB9F00B0ACBB /* SelectGenreViewController.swift */,
 				1B24D47424A4BDAD00B0ACBB /* AddCommentsViewController.swift */,
-				1B24D46024A47E3F00B0ACBB /* Main.storyboard */,
-				1B24D46324A47E4400B0ACBB /* Assets.xcassets */,
-				1B24D46524A47E4400B0ACBB /* LaunchScreen.storyboard */,
-				1B24D46824A47E4400B0ACBB /* Info.plist */,
 			);
-			path = Whats_that_whistle;
+			path = ViewControlller;
+			sourceTree = "<group>";
+		};
+		1B309E6B24A6072E005FDE9E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1B24D47024A4B0B800B0ACBB /* DateFormat-Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +196,7 @@
 			files = (
 				1B24D47724A4C3CE00B0ACBB /* SubmitViewController.swift in Sources */,
 				1B24D45F24A47E3F00B0ACBB /* ViewController.swift in Sources */,
+				1B309E6824A60409005FDE9E /* Whistle.swift in Sources */,
 				1B24D45B24A47E3F00B0ACBB /* AppDelegate.swift in Sources */,
 				1B24D47324A4BB9F00B0ACBB /* SelectGenreViewController.swift in Sources */,
 				1B24D47524A4BDAD00B0ACBB /* AddCommentsViewController.swift in Sources */,
@@ -304,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Whats_that_whistle/Whats_that_whistle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UW45Q275S;
 				INFOPLIST_FILE = Whats_that_whistle/Info.plist;
@@ -322,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Whats_that_whistle/Whats_that_whistle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UW45Q275S;
 				INFOPLIST_FILE = Whats_that_whistle/Info.plist;
