@@ -20,6 +20,7 @@
 		1B24D47724A4C3CE00B0ACBB /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24D47624A4C3CE00B0ACBB /* SubmitViewController.swift */; };
 		1B309E6624A5F7BA005FDE9E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B309E6524A5F7BA005FDE9E /* CloudKit.framework */; };
 		1B309E6824A60409005FDE9E /* Whistle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B309E6724A60409005FDE9E /* Whistle.swift */; };
+		1B605D2624A9D0750047759B /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B605D2524A9D0750047759B /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		1B309E6324A5F7B5005FDE9E /* Whats_that_whistle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Whats_that_whistle.entitlements; sourceTree = "<group>"; };
 		1B309E6524A5F7BA005FDE9E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		1B309E6724A60409005FDE9E /* Whistle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whistle.swift; sourceTree = "<group>"; };
+		1B605D2524A9D0750047759B /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				1B24D45E24A47E3F00B0ACBB /* ViewController.swift */,
+				1B605D2524A9D0750047759B /* ResultsViewController.swift */,
 				1B24D47624A4C3CE00B0ACBB /* SubmitViewController.swift */,
 				1B24D46E24A485E200B0ACBB /* RecordWhistleViewController.swift */,
 				1B24D47224A4BB9F00B0ACBB /* SelectGenreViewController.swift */,
@@ -197,6 +200,7 @@
 				1B24D47724A4C3CE00B0ACBB /* SubmitViewController.swift in Sources */,
 				1B24D45F24A47E3F00B0ACBB /* ViewController.swift in Sources */,
 				1B309E6824A60409005FDE9E /* Whistle.swift in Sources */,
+				1B605D2624A9D0750047759B /* ResultsViewController.swift in Sources */,
 				1B24D45B24A47E3F00B0ACBB /* AppDelegate.swift in Sources */,
 				1B24D47324A4BB9F00B0ACBB /* SelectGenreViewController.swift in Sources */,
 				1B24D47524A4BDAD00B0ACBB /* AddCommentsViewController.swift in Sources */,

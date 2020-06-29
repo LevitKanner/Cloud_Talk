@@ -14,9 +14,6 @@ class ViewController: UITableViewController {
     var whistles = [Whistle]()
     
     
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -28,7 +25,6 @@ class ViewController: UITableViewController {
             loadWhistles()
         }
     }
-    
     
     
     override func viewDidLoad() {
@@ -53,18 +49,65 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let whistle = whistles[indexPath.row]
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.attributedText =  makeAttributedString(title: whistle.genre, subtitle: whistle.comments)
+        cell.textLabel?.attributedText =  makeAttributedString(title: whistle.genre, subtitle: whistle.comment)
         cell.textLabel?.numberOfLines = 0
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        whistles.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ResultsViewController()
+        vc.whistle = whistles[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     
     //MARK: - METHODS
+    //Loading data from ICloud
     func loadWhistles() {
+        let predicate = NSPredicate(value: true)
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        let query = CKQuery(recordType: "Whistles", predicate: predicate)
+        query.sortDescriptors = [sortDescriptor]
         
+        //Use query operation when we want only some fields
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["genre" , "comment"]
+        operation.resultsLimit = 50
+        
+        var newWhistles = [Whistle]()
+        
+        //Pass in a closure that takes a record to the operation object...to handle downloading
+        operation.recordFetchedBlock = { record in
+            let whistle = Whistle()
+            whistle.recordID = record.recordID
+            whistle.comment = record["comment"]
+            whistle.genre = record["genre"]
+            newWhistles.append(whistle)
+        }
+        
+        //Set a closure on the operation object to handle completion
+        operation.queryCompletionBlock = { [unowned self ] cursor , error in
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    self.configureAlert(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)")
+                    return
+                }
+                ViewController.isDirty = false
+                self.whistles = newWhistles
+                self.tableView.reloadData()
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation) //Adds the created operation to the container to run it.
     }
+    
+    
     
     
     func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
@@ -84,6 +127,14 @@ class ViewController: UITableViewController {
         }
         
         return titleString
+    }
+    
+    
+    
+    func configureAlert(title: String! , message: String!) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
     }
 }
 
