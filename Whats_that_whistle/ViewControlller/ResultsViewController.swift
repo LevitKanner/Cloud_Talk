@@ -176,7 +176,7 @@ class ResultsViewController: UITableViewController {
         
         CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { [unowned self] results, error in
             if let error = error {
-                print(error.localizedDescription)
+                self.configureAlert(title: "An error occurred", message: error.localizedDescription)
             } else {
                 if let results = results {
                     self.parseResults(records: results)
@@ -198,6 +198,12 @@ class ResultsViewController: UITableViewController {
             self.suggestions = newSuggestions
             self.tableView.reloadData()
         }
+    }
+    
+    func configureAlert(title: String! , message: String!){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert , animated: true)
     }
 }
 
