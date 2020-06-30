@@ -50,6 +50,10 @@ class AddCommentsViewController: UIViewController, UITextViewDelegate {
         }
         
         navigationController?.pushViewController(vc, animated: true)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        center.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -58,5 +62,21 @@ class AddCommentsViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @objc func adjustForKeyboard(notification: Notification){
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardValue.cgRectValue
+        
+        let keyboardEndFrame = view.convert(keyboardFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            comment.contentInset = .zero
+        }else {
+            comment.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        comment.scrollIndicatorInsets = comment.contentInset
+        
+        let selectRange = comment.selectedRange
+        comment.scrollRangeToVisible(selectRange)
+    }
     
 }

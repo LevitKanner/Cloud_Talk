@@ -175,13 +175,16 @@ class ResultsViewController: UITableViewController {
         query.sortDescriptors = [sort]
         
         CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { [unowned self] results, error in
-            if let error = error {
-                self.configureAlert(title: "An error occurred", message: error.localizedDescription)
-            } else {
-                if let results = results {
-                    self.parseResults(records: results)
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.configureAlert(title: "An error occurred", message: error.localizedDescription)
+                } else {
+                    if let results = results {
+                        self.parseResults(records: results)
+                    }
                 }
             }
+            
         }
     }
     

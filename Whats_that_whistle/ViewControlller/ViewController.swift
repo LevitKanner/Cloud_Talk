@@ -33,13 +33,20 @@ class ViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addWhistle))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .plain, target: self, action: #selector(selectGenre))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     
+    //MARK: - BUTTON ACTIONS
     @objc func addWhistle() {
         let vc = RecordWhistleViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func selectGenre() {
+        let vc = MyGenresViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
